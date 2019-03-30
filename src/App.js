@@ -1,28 +1,18 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React  from 'react';
+import GameGrid from './components/GameGrid';
+import GameStatus from './components/GameStatus';
+import Game from './Game';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
+let game = new Game();
+window.game = game;
 
-export default App;
+export default function App() {
+  return (
+    <>
+      <h1>Tic Tac Toe</h1>
+      <GameGrid game={game} />
+      <GameStatus game={game} />
+      <button onClick={game.reset}>Reset</button>
+    </>
+  )
+};
