@@ -2,16 +2,16 @@ import React from 'react';
 
 export default function GameStatus(props) {
   let message = '';
-  if(props.game.xWin()) { 
+  if(props.xWin()) { 
     message = 'X wins the game!'
-  } else if(props.game.oWin()) {
+  } else if(props.oWin()) {
     message = 'O wins the game!'
-  } else if(props.game.tie()) {
+  } else if(props.tie()) {
     message = 'Tie game!'
   } else {
-    message = `It is ${props.game.currentPlayerChar()}'s turn`
+    message = `It is ${props.currentChar()}'s turn`
   }
   return(
-    <div dangerouslySetInnerHTML={{__html: message}} />
+    <div id="status" dangerouslySetInnerHTML={{__html: message}} />
   )
 }

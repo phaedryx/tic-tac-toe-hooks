@@ -9,9 +9,25 @@ body {
 
 h1 {
   font-size: 64px;
+  margin-bottom: 0;
 }
 
 #gamegrid {
   display: grid;
+  width: 360px;
   font-size: 96px;
+  grid-template-columns: repeat(3, auto);
+  margin: auto;
+}
+.cell {
+  display: block;
+  width: 120px;
+  height: 120px;
+  text-align: center;
+}
+.cell:hover {
+  cursor: pointer;
+}
+#status {
+  margin-top: 60px;
 }
