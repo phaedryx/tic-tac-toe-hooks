@@ -1,12 +1,10 @@
 import React from 'react';
 
 export default function Cell(props) {
-  function handleClick() { props.playAt(props.pos) }
-
   return(
     <div
       className="cell"
-      onClick={ handleClick }
+      onClick={ props.play }
       dangerouslySetInnerHTML={{ __html: props.char }}
     />
   )

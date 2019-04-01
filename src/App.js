@@ -72,7 +72,7 @@ export default function App() {
   }
 
   const cells = board.map((val, index) =>
-    <Cell key={index} pos={index} char={ charFor(val) } playAt={ playAt } />
+    <Cell key={index} char={ charFor(val) } play={ () => playAt(index) } />
   )
 
   return (
@@ -80,7 +80,7 @@ export default function App() {
       <h1>Tic Tac Toe</h1>
       <div id="gamegrid">{ cells }</div>
       <div id="status" dangerouslySetInnerHTML={{ __html: status() }} />
-      <button onClick={reset}>Reset</button>
+      <button onClick={ reset }>Reset</button>
     </>
   )
 };
