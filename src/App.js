@@ -25,9 +25,9 @@ export default function App() {
     return currentPlayer === X ? xChar : oChar;
   }
 
-  function charAt(pos) {
-    if (board[pos] === X) return xChar;
-    if (board[pos] === O) return oChar;
+  function charFor(value) {
+    if (value === X) return xChar;
+    if (value === O) return oChar;
 
     return eChar;
   }
@@ -43,34 +43,18 @@ export default function App() {
   // 0 1 2
   // 3 4 5
   // 6 7 8
-  function xWin() {
+  function hasWon(player) {
     // across
-    if (board[0] + board[1] + board[2] === 3 * X) return true;
-    if (board[3] + board[4] + board[5] === 3 * X) return true;
-    if (board[6] + board[7] + board[8] === 3 * X) return true;
+    if (board[0] + board[1] + board[2] === 3 * player) return true;
+    if (board[3] + board[4] + board[5] === 3 * player) return true;
+    if (board[6] + board[7] + board[8] === 3 * player) return true;
     // down
-    if (board[0] + board[3] + board[6] === 3 * X) return true;
-    if (board[1] + board[4] + board[7] === 3 * X) return true;
-    if (board[2] + board[5] + board[8] === 3 * X) return true;
+    if (board[0] + board[3] + board[6] === 3 * player) return true;
+    if (board[1] + board[4] + board[7] === 3 * player) return true;
+    if (board[2] + board[5] + board[8] === 3 * player) return true;
     //diagonal
-    if (board[0] + board[4] + board[8] === 3 * X) return true;
-    if (board[6] + board[4] + board[2] === 3 * X) return true;
-
-    return false;
-  }
-
-  function oWin() {
-    // across
-    if (board[0] + board[1] + board[2] === 3 * O) return true;
-    if (board[3] + board[4] + board[5] === 3 * O) return true;
-    if (board[6] + board[7] + board[8] === 3 * O) return true;
-    // down
-    if (board[0] + board[3] + board[6] === 3 * O) return true;
-    if (board[1] + board[4] + board[7] === 3 * O) return true;
-    if (board[2] + board[5] + board[8] === 3 * O) return true;
-    //diagonal
-    if (board[0] + board[4] + board[8] === 3 * O) return true;
-    if (board[6] + board[4] + board[2] === 3 * O) return true;
+    if (board[0] + board[4] + board[8] === 3 * player) return true;
+    if (board[6] + board[4] + board[2] === 3 * player) return true;
 
     return false;
   }
@@ -79,9 +63,9 @@ export default function App() {
 
   function status() {
     let message = '';
-    if (xWin()) {
+    if (hasWon(X)) {
       message = `${xChar} wins the game!`
-    } else if (oWin()) {
+    } else if (hasWon(O)) {
       message = `${oChar} wins the game!`
     } else if (tie()) {
       message = 'Tie game!'
@@ -91,8 +75,8 @@ export default function App() {
     return message;
   }
 
-  const cells = board.map((_value, index) =>
-    <Cell key={index} pos={index} char={ charAt(index) } playAt={ playAt } />
+  const cells = board.map((val, index) =>
+    <Cell key={index} pos={index} char={ charFor(val) } playAt={ playAt } />
   )
 
   return (
