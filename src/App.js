@@ -21,10 +21,6 @@ export default function App() {
     currentPlayer === X ? setCurrentPlayer(O) : setCurrentPlayer(X)
   }
 
-  function currentChar() {
-    return currentPlayer === X ? xChar : oChar;
-  }
-
   function charFor(value) {
     if (value === X) return xChar;
     if (value === O) return oChar;
@@ -70,7 +66,7 @@ export default function App() {
     } else if (tie()) {
       message = 'Tie game!'
     } else {
-      message = `It is ${currentChar()}'s turn`
+      message = `It is ${charFor(currentPlayer)}'s turn`
     }
     return message;
   }
