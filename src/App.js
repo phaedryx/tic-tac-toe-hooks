@@ -33,7 +33,7 @@ export default function App() {
   }
 
   function playAt(pos) {
-    if(board[pos] === E) {
+    if (board[pos] === E) {
       board[pos] = currentPlayer;
       setBoard(board);
       togglePlayer();
@@ -45,16 +45,16 @@ export default function App() {
   // 6 7 8
   function xWin() {
     // across
-    if(board[0] + board[1] + board[2] === 3 * X) return true;
-    if(board[3] + board[4] + board[5] === 3 * X) return true;
-    if(board[6] + board[7] + board[8] === 3 * X) return true;
+    if (board[0] + board[1] + board[2] === 3 * X) return true;
+    if (board[3] + board[4] + board[5] === 3 * X) return true;
+    if (board[6] + board[7] + board[8] === 3 * X) return true;
     // down
-    if(board[0] + board[3] + board[6] === 3 * X) return true;
-    if(board[1] + board[4] + board[7] === 3 * X) return true;
-    if(board[2] + board[5] + board[8] === 3 * X) return true;
+    if (board[0] + board[3] + board[6] === 3 * X) return true;
+    if (board[1] + board[4] + board[7] === 3 * X) return true;
+    if (board[2] + board[5] + board[8] === 3 * X) return true;
     //diagonal
-    if(board[0] + board[4] + board[8] === 3 * X) return true;
-    if(board[6] + board[4] + board[2] === 3 * X) return true;
+    if (board[0] + board[4] + board[8] === 3 * X) return true;
+    if (board[6] + board[4] + board[2] === 3 * X) return true;
 
     return false;
   }
